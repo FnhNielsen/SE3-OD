@@ -57,7 +57,7 @@ services:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: persondb
             MYSQL_USER: user
-            MYSQL_PASSWORD: password
+            MYSQL_PASSWORD: 1234
         expose: 
           - 3306
         networks:
@@ -65,7 +65,7 @@ services:
         volumes: 
             - ./Database/:/docker-entrypoint-initdb.d
     
-    backendserver:
+    backend:
       image: backend
       container_name: backend
       build:
@@ -79,7 +79,7 @@ services:
           - network1
           - network2
     
-    webserver:
+    proxy:
       image: nginx:latest
       volumes:
         - ./proxy/html:/usr/share/nginx/html
@@ -89,7 +89,7 @@ services:
         - 80:80
         - 443:443
       depends_on:
-        - backendserver
+        - backend
       networks:
         - network1
 
