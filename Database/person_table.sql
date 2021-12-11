@@ -5,4 +5,4 @@ CREATE TABLE Person (
 );
 
 INSERT INTO Person VALUES (1,'John','Doe');
-INSERT INTO Person VALUES (2,'Art','Vandelay');
+INSERT INTO Perso VALUES (2,'Art','Vandelay');
