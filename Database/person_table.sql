@@ -1,7 +1,8 @@
-CREATE TABLE persons (
+CREATE TABLE Person (
     PersonID int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(255) NOT NULL,
     LastName VARCHAR(255) NOT NULL
 );
 
-INSERT INTO persons VALUES (1,'John','Doe');
+INSERT INTO Person VALUES (1,'John','Doe');
+INSERT INTO Person VALUES (2,'Art','Vandelay');

@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'Database'
+app.config['MYSQL_HOST'] = 'mysqldb'
 app.config['MYSQL_USER'] = 'user'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'persondb'
@@ -13,7 +13,7 @@ mysql = MySQL(app)
 @app.route('/persons', methods=['GET'])
 def get_persons():
     _cursor = mysql.connection.cursor()
-    sql_query = "SELECT * FROM persons"
+    sql_query = "SELECT * FROM Person"
     _cursor.execute(sql_query)
     rv = _cursor.fetchall()
     payload = []
@@ -27,7 +27,7 @@ def get_persons():
 @app.route('/person', methods=['POST'])
 def add_person():
     _cursor = mysql.connection.cursor()
-    sql_query = "INSERT INTO persons (Firstname, Lastname) VALUES (%s, %s)"
+    sql_query = "INSERT INTO Person (Firstname, Lastname) VALUES (%s, %s)"
     val = (request.form['firstname'], request.form['lastname'])
     _cursor.execute(sql_query,val)
     mysql.connection.commit()

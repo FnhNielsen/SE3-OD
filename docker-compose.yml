@@ -51,7 +51,7 @@
 version: '3.5'
 
 services: 
-    Database:
+    mysqldb:
         image: mysql:latest
         environment: 
             MYSQL_ROOT_PASSWORD: root
@@ -65,14 +65,14 @@ services:
         volumes: 
             - ./Database/:/docker-entrypoint-initdb.d
     
-    backend:
+    backendserver:
       image: backend
       container_name: backend
       build:
         context:
             ./backend
       depends_on:
-          - Database
+          - mysqldb
       expose:
         - 5000
       networks:
@@ -89,7 +89,7 @@ services:
         - 80:80
         - 443:443
       depends_on:
-        - backend
+        - backendserver
       networks:
         - network1
 
