@@ -1,4 +1,4 @@
-FROM python
+FROM gitlab.sdu.dk:5050/odw-e2020/docker:python-latest
 RUN pip install Flask
 RUN pip install flask_mysqldb
 COPY . .
