@@ -2,7 +2,7 @@ version: '3.5'
 
 services: 
     mysqldb:
-        image: mysql:latest
+        image: gitlab.sdu.dk:5050/odw-e2020/docker:mysql-latest
         environment: 
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: persondb
@@ -30,7 +30,7 @@ services:
           - network2
     
     proxy:
-      image: nginx:latest
+      image: gitlab.sdu.dk:5050/odw-e2020/docker:nginx-latest
       volumes:
         - ./proxy/html:/usr/share/nginx/html
         - ./proxy/nginx.conf:/etc/nginx/nginx.conf

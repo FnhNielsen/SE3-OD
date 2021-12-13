@@ -15,20 +15,20 @@ def get_persons():
     _cursor = mysql.connection.cursor()
     sql_query = "SELECT * FROM Person"
     _cursor.execute(sql_query)
-    rv = _cursor.fetchall()
+    data_set = _cursor.fetchall()
     payload = []
-    content = {}
-    for result in rv:
-        content = {'PersonID': result[0], 'Firstname': result[1], 'Lastname': result[2]}
-        payload.append(content)
-        content = {}
+    data = {}
+    for res in data_set:
+        data = {'PersonID': res[0], 'Firstname': res[1], 'Lastname': res[2]}
+        payload.append(data)
+        data = {}
     return jsonify(payload)
 
 @app.route('/person', methods=['POST'])
 def add_person():
     _cursor = mysql.connection.cursor()
     sql_query = "INSERT INTO Person (Firstname, Lastname) VALUES (%s, %s)"
-    val = (request.form['firstname'], request.form['lastname'])
+    val = (request.form['Firstname'], request.form['Lastname'])
     _cursor.execute(sql_query,val)
     mysql.connection.commit()
     return redirect('/persons')
