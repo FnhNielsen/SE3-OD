@@ -16,8 +16,8 @@ services:
             - ./Database/:/docker-entrypoint-initdb.d
     
     backendserver:
-      image: backend
-      container_name: backend
+      image: backendserver
+      container_name: backendserver
       build:
         context:
             ./backend
