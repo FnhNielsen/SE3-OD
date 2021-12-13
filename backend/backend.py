@@ -28,7 +28,7 @@ def get_persons():
 def add_person():
     _cursor = mysql.connection.cursor()
     sql_query = "INSERT INTO Person (Firstname, Lastname) VALUES (%s, %s)"
-    val = (request.form['Firstname'], request.form['Lastname'])
+    val = (request.form['firstname'], request.form['lastname'])
     _cursor.execute(sql_query,val)
     mysql.connection.commit()
     return redirect('/persons')
