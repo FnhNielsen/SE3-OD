@@ -5,3 +5,10 @@
 *.csr
 *.crt
 /certificates/*
+proxy/certificates/rootCA.key
+proxy/certificates/rootCA.pem
+proxy/certificates/rootCA.srl
+proxy/certificates/site.crt
+proxy/certificates/site.csr
+proxy/certificates/site.key
+proxy/certificates/v3.ext
